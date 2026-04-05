@@ -4,6 +4,9 @@
  pip install numpy    
 ```
 
+https://kuboweb.github.io/-kubo/ce/IwanamiBook.html
+のglmmフォルダのdata.csvを見る
+
 ### 7.4 一般化線形混合モデルの最尤推定
 #### 二項分布 と N(0,1)の混合
 Binomial GLMM（N=8, logitリンク, ランダム効果 𝑟 ∼ 𝑁(0 , 3 ^2))）
