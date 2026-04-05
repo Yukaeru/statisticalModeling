@@ -108,3 +108,6 @@ R -e "install.packages('glmmML', repos='https://cloud.r-project.org')"
 default では glmmML() は Laplace 近似法 ({#code method="Laplace"}) を使うため
 
 から`method="ghq"`をつけることでうまく教科書と一致する。
+β₁ = -4.1296
+β₂ = 0.9903
+s  = 2.4939
