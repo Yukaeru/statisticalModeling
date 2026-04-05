@@ -35,3 +35,11 @@ P(Y=y)=\int \binom{8}{y}q(r)^y(1-q(r))^{8-y}\phi(r),dr
 
 #### Poisson と N(0,1)の混合
 ![p178.png](p158.png)
+
+![glmm_vs_true.png](glmm_vs_true.png)
+```markdown
+推定値  β̂₀ = -3.4046  (真値 -4.0)
+推定値  β̂₁ = 0.8268  (真値 1.0)
+切片の誤差: +0.5954
+傾きの誤差: -0.1732
+```
