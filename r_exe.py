@@ -19,7 +19,7 @@ import scipy.special
 r_script = """
 library(glmmML)
 df <- read.csv("data.csv")
-model <- glmmML(cbind(y, N-y) ~ x, cluster=df$id, data=df, family=binomial)
+model <- glmmML(cbind(y, N-y) ~ x, cluster=df$id, data=df, family=binomial, method="ghq")
 beta1 <- model$coefficients[1]
 beta2 <- model$coefficients[2]
 s     <- model$sigma

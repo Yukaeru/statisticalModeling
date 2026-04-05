@@ -99,3 +99,12 @@ s  = 2.4080
 ````shell
 R -e "install.packages('glmmML', repos='https://cloud.r-project.org')"
 ````
+
+---> https://kuboweb.github.io/-kubo/ce/IwanamiBook.html#ch07
+>大坪さん (創価大) から p.159 などに掲載されている推定結果についてのご指摘をいただきました (2012-12-25):
+掲載されている glmmML() の推定結果は method="ghq" を指定した場合に相当
+これは対数尤度の積分に Gauss-Helmite 法を使っている
+何も指定しないで glmmML() を使用した場合には，推定値などが少し異なる結果が得られる
+default では glmmML() は Laplace 近似法 ({#code method="Laplace"}) を使うため
+
+から`method="ghq"`をつけることでうまく教科書と一致する。
