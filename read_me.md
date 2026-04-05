@@ -95,3 +95,7 @@ Rでやると、
 β₁ = -4.1893
 β₂ = 1.0047
 s  = 2.4080
+
+````shell
+R -e "install.packages('glmmML', repos='https://cloud.r-project.org')"
+````

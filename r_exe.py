@@ -9,12 +9,21 @@ import scipy.special
 # ======================
 # 1. RスクリプトでGLMM推定
 # ======================
+# r_script = """
+# library(lme4)
+# df <- read.csv("data.csv")
+# model <- glmer(cbind(y, N-y) ~ x + (1|id), data=df, family=binomial)
+# params <- c(fixef(model), sigma=as.numeric(VarCorr(model)$id)^0.5)
+# write.csv(data.frame(t(params)), "glmm_params.csv", row.names=FALSE)
+# """
 r_script = """
-library(lme4)
+library(glmmML)
 df <- read.csv("data.csv")
-model <- glmer(cbind(y, N-y) ~ x + (1|id), data=df, family=binomial)
-params <- c(fixef(model), sigma=as.numeric(VarCorr(model)$id)^0.5)
-write.csv(data.frame(t(params)), "glmm_params.csv", row.names=FALSE)
+model <- glmmML(cbind(y, N-y) ~ x, cluster=df$id, data=df, family=binomial)
+beta1 <- model$coefficients[1]
+beta2 <- model$coefficients[2]
+s     <- model$sigma
+write.csv(data.frame(beta1=beta1, beta2=beta2, sigma=s), "glmm_params.csv", row.names=FALSE)
 """
 
 with open("glmm_fit.R", "w") as f:
@@ -25,9 +34,13 @@ subprocess.run(["Rscript", "glmm_fit.R"], check=True)
 # ======================
 # 2. 推定パラメータ読み込み
 # ======================
+# params = pd.read_csv("glmm_params.csv").iloc[0]
+# beta1  = params["X.Intercept."]
+# beta2  = params["x"]
+# s      = params["sigma"]
 params = pd.read_csv("glmm_params.csv").iloc[0]
-beta1  = params["X.Intercept."]
-beta2  = params["x"]
+beta1  = params["beta1"]
+beta2  = params["beta2"]
 s      = params["sigma"]
 
 print(f"β₁ = {beta1:.4f}")
