@@ -111,4 +111,12 @@ default では glmmML() は Laplace 近似法 ({#code method="Laplace"}) を使�
 β₁ = -4.1296
 β₂ = 0.9903
 s  = 2.4939
-![glmm_ghp.png](glmm_ghp.png)
+
+
+```shell
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+# macOSのヒラギノフォントを使う
+plt.rcParams['font.family'] = 'Hiragino Sans'
+```

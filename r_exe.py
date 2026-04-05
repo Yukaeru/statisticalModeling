@@ -5,6 +5,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate
 import scipy.special
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+# macOSのヒラギノフォントを使う
+plt.rcParams['font.family'] = 'Hiragino Sans'
 
 # ======================
 # 1. RスクリプトでGLMM推定
